@@ -3,6 +3,10 @@ composer-install:
 	rm -f composer.lock
 	composer install
 
+init-db:
+	rm -f database/database.sqlite
+	touch database/database.sqlite
+
 jwt-secret:
 	php artisan jwt:secret
 
