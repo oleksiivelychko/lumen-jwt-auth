@@ -2,6 +2,9 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
+use App\Http\Controllers\JWTController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -15,4 +18,14 @@
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
+});
+
+$router->group([
+    'prefix' => 'auth'
+], function () {
+    Route::post('login', [JWTController::class, 'login']);
+    Route::post('register', [JWTController::class, 'register']);
+    Route::post('logout', [JWTController::class, 'logout']);
+    Route::get('refresh', [JWTController::class, 'refresh']);
+    Route::get('me', [JWTController::class, 'me']);
 });
