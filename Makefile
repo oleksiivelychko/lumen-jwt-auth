@@ -3,6 +3,9 @@ composer-install:
 	rm -f composer.lock
 	composer install
 
+git-push:
+	git push heroku main
+
 init-db:
 	rm -f database/database.sqlite
 	touch database/database.sqlite
@@ -12,6 +15,9 @@ install-xdebug:
 
 jwt-secret:
 	php artisan jwt:secret
+
+heroku-git:
+	heroku git:remote -a oleksiivelychkolumenjwtauth
 
 run:
 	php -S localhost:8000 -t public
