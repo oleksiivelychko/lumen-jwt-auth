@@ -7,6 +7,9 @@ init-db:
 	rm -f database/database.sqlite
 	touch database/database.sqlite
 
+install-xdebug:
+	arch -arm64 sudo pecl install xdebug
+
 jwt-secret:
 	php artisan jwt:secret
 

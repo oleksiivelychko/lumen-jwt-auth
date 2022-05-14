@@ -2,3 +2,4 @@
 /.idea
 /database/database.sqlite
 .env
+.phpunit.result.cache
