@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Lumen\Auth\Authorizable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
@@ -66,5 +67,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function getEmail(): string
     {
         return $this->email;
+    }
+
+    public function setPasswordAttribute(string $value)
+    {
+        $this->attributes['password'] = Hash::make($value);
     }
 }
