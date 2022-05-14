@@ -3,7 +3,6 @@
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 use App\Http\Controllers\JWTController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +21,20 @@ $router->get('/', function () use ($router) {
 
 $router->group([
     'prefix' => 'auth'
-], function () {
-    Route::post('login', [JWTController::class, 'login']);
-    Route::post('register', [JWTController::class, 'register']);
-    Route::post('logout', [JWTController::class, 'logout']);
-    Route::get('refresh', [JWTController::class, 'refresh']);
-    Route::get('me', [JWTController::class, 'me']);
+], function () use ($router) {
+    $router->post('login', [
+        'as' => 'jwt.login', 'uses' => 'JWTController@login'
+    ]);
+    $router->post('register', [
+        'as' => 'jwt.register', 'uses' => 'JWTController@register'
+    ]);
+    $router->post('logout', [
+        'as' => 'jwt.logout', 'uses' => 'JWTController@logout'
+    ]);
+    $router->get('refresh', [
+        'as' => 'jwt.refresh', 'uses' => 'JWTController@refresh'
+    ]);
+    $router->get('me', [
+        'as' => 'jwt.me', 'uses' => 'JWTController@me'
+    ]);
 });
