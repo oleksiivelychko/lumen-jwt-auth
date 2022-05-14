@@ -1,0 +1,30 @@
+###
+POST {{host}}/auth/register/
+Content-Type: application/json
+
+{
+    "name": "test",
+    "email": "test@test.test",
+    "password": "secret",
+    "password_confirmation": "secret"
+}
+
+###
+POST {{host}}/auth/login/
+Content-Type: application/json
+
+{
+    "email": "test@test.test",
+    "password": "secret"
+}
+
+###
+GET {{host}}/auth/me/
+Authorization: Bearer {{token}}
+###
+GET {{host}}/auth/refresh/
+Authorization: Bearer {{token}}
+
+###
+POST {{host}}/auth/logout/
+Authorization: Bearer {{token}}
