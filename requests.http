@@ -1,4 +1,4 @@
-###
+### Register user
 POST {{host}}/auth/register/
 Content-Type: application/json
 
@@ -9,7 +9,7 @@ Content-Type: application/json
     "password_confirmation": "secret"
 }
 
-###
+### Login user
 POST {{host}}/auth/login/
 Content-Type: application/json
 
@@ -18,13 +18,14 @@ Content-Type: application/json
     "password": "secret"
 }
 
-###
+### Get user
 GET {{host}}/auth/me/
 Authorization: Bearer {{token}}
-###
+
+### Refresh token
 GET {{host}}/auth/refresh/
 Authorization: Bearer {{token}}
 
-###
+### Logout user
 POST {{host}}/auth/logout/
 Authorization: Bearer {{token}}
