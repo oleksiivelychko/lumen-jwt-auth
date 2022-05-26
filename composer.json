@@ -26,11 +26,6 @@
             "Tests\\": "tests/"
         }
     },
-    "scripts": {
-        "post-install-cmd": [
-            "@php artisan migrate:refresh --force"
-        ]
-    },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
