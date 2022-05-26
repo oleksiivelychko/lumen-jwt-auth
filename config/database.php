@@ -1,13 +1,14 @@
 <?php
 
-$dbConnection = env('DB_CONNECTION', 'pgsql');
-if ($dbConnection === 'pgsql') {
-    $url = parse_url($dbConnection);
-
-    $hostname   = $url['host'];
-    $username   = $url['user'];
-    $password   = $url['pass'];
-    $database   = substr($url['path'], 1);
+if (env('DB_CONNECTION') === 'pgsql' && env('DATABASE_URL')) {
+    $url = parse_url(env('DATABASE_URL'));
+    if ($url['scheme'] === 'postgres') {
+        $host   = $url['host'];
+        $port   = $url['port'];
+        $user   = $url['user'];
+        $pass   = $url['pass'];
+        $path   = substr($url['path'], 1);
+    }
 }
 
 return [
@@ -27,11 +28,11 @@ return [
 
         'pgsql' => [
             'driver'            => 'pgsql',
-            'host'              => $hostname ?? null,
-            'port'              => '5432',
-            'database'          => $database ?? null,
-            'username'          => $username ?? null,
-            'password'          => $password ?? null,
+            'host'              => $host ?? null,
+            'port'              => $port ?? null,
+            'database'          => $path ?? null,
+            'username'          => $user ?? null,
+            'password'          => $pass ?? null,
             'charset'           => 'utf8',
             'prefix'            => '',
             'prefix_indexes'    => true,
