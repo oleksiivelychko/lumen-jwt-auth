@@ -1,8 +1,3 @@
-composer-install:
-	rm -rf vendor
-	rm -f composer.lock
-	composer install
-
 create-project:
 	composer create-project --prefer-dist laravel/lumen lumen-jwt-auth
 

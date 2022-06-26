@@ -1,9 +1,16 @@
 {
-    "name": "laravel/lumen",
-    "description": "The Laravel Lumen Framework.",
-    "keywords": ["framework", "laravel", "lumen"],
+    "name": "oleksiivelychko/lumen-jwt-auth",
+    "description": "JWT authentication RESTful API microservice based on Laravel Lumen microframework.",
+    "keywords": ["jwt", "laravel", "lumen"],
+    "homepage": "https://github.com/oleksiivelychko/lumen-jwt-auth",
     "license": "MIT",
     "type": "project",
+    "authors": [
+        {
+            "name": "Oleksii Velychko",
+            "email": "oleksiivelychko@icloud.com"
+        }
+    ],
     "require": {
         "php": "^8.1",
         "laravel/lumen-framework": "^9.0.2",
